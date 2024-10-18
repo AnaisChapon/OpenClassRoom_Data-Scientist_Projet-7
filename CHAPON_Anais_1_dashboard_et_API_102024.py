@@ -1,6 +1,13 @@
 import subprocess
 import os
+from flask import Flask
 
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Bienvenue sur mon API Flask personnalisée !"
+  
 # Chemin relatif pour accéder à api.py et dashboard.py
 scripts_directory = "./CHAPON_Anais_2_dossier_code_102024/Scripts"
 
@@ -15,3 +22,6 @@ print(f"API Flask lancée sur le port {api_port}")
 # Lancer le dashboard Streamlit
 dashboard_process = subprocess.Popen(["streamlit", "run", os.path.join(scripts_directory, "dashboard_complet_light.py"), "--server.port", dashboard_port])
 print(f"Dashboard Streamlit lancé sur le port {dashboard_port}")
+
+if __name__ == '__main__':
+    app.run()

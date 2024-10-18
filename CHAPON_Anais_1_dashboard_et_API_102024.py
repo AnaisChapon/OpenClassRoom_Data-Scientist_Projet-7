@@ -2,7 +2,7 @@ import subprocess
 import os
 
 # Chemin relatif pour accéder à api.py et dashboard.py
-scripts_directory = "./Scripts"
+scripts_directory = "./CHAPON_Anais_2_dossier_code_102024/Scripts"
 
 # Définir le port pour l'API Flask et le dashboard Streamlit
 api_port = "5000"

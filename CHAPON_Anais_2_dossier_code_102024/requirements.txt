@@ -20,3 +20,4 @@ scikit-learn==1.4.2
 scipy==1.11.4
 xxhash==3.4.1
 zstandard==0.22.0
+gunicorn==20.1.0

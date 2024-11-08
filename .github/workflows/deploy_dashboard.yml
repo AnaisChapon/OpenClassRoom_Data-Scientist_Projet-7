@@ -26,6 +26,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Deploy to Server
+    - name: Run Dashboard
       run: |
-        echo "Deploying your dashboard..."
+        echo "Starting the dashboard..."
+        python CHAPON_Anais_2_dossier_code_102024/Scripts/dashboard_complet_light.py

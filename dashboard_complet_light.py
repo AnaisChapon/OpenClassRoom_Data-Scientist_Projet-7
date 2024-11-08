@@ -5,11 +5,15 @@ import plotly.graph_objects as go
 import requests
 import streamlit as st
 
+# Obtenez le répertoire courant du script
+current_directory = os.path.dirname(os.path.abspath(__file__))
+
 # Chargement des fichiers
-path_df_train = os.path.join("application_train_light.csv")
-path_definition_features_df = os.path.join("definition_features.csv")
-df_train = pd.read_csv(path_df_train, low_memory=True)
-definition_features_df = pd.read_csv(path_definition_features_df)
+path_df_train_url = "https://github.com/AnaisChapon/OpenClassRoom_Data-Scientist_Projet-7/blob/main/CHAPON_Anais_2_dossier_code_102024/Dataset/application_test_light.csv"
+path_definition_features_df_url = "https://github.com/AnaisChapon/OpenClassRoom_Data-Scientist_Projet-7/blob/main/CHAPON_Anais_2_dossier_code_102024/Dataset/definition_features.csv"
+
+definition_features_df = pd.read_csv(path_definition_features_df_url)
+df_train = pd.read_csv(path_df_train_url, low_memory=True)
 
 st.set_page_config(layout="wide")
 
@@ -226,7 +230,7 @@ if col1.button("Run") or state["data_received"]:
         state["last_sk_id_curr"] = sk_id_curr
 
     if not state["data_received"]:
-        response = requests.post("http://localhost:5000/predict", json={"SK_ID_CURR": int(sk_id_curr)})
+        response = requests.post("https://achapon.pythonanywhere.com/predict", json={"SK_ID_CURR": int(sk_id_curr)})
         if response.status_code != 200:
             st.error(f"Erreur lors de l'appel à l'API: {response.status_code}")
             st.stop()
